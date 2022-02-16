@@ -22,7 +22,7 @@ class Board
   end
 end
 
-
+def game_setup()
 #the following sets up an instance of the board class for each part of the board
 $a_1 = Board.new()
 $a_2 = Board.new()
@@ -38,6 +38,7 @@ $win_conditions = Array.new(9,0) #each value except the last is a win condition
 $game = true #game loop ends when this is false
 $turn = true #Player 1 (X) goes on true, player 2 (O) on false
 $game_counter = 0
+end
 
 
 def gameboard()
@@ -155,8 +156,25 @@ def check_for_win
   end
 end
 
+def quit?
+  quit_loop_condition = true
+  while quit_loop_condition == true
+  puts "\n\nWould you like to play again?"
+  play_again = gets.downcase.chomp
+    if play_again == "yes" || play_again == "y"
+    quit_loop_condition = false
+    game_setup()
+    elsif play_again == "no" || play_again == "n"
+    puts "Thank you for playing, and have a nice day!"
+    quit_loop_condition = false
+    else
+    puts "I'm sorry, I didn't understand."
+    end
+  end
+end
 
 
+game_setup()
 
 while ($game == true)
   if ($turn == true)
@@ -169,4 +187,7 @@ while ($game == true)
     end
   end
   check_for_win()
+  if $game == false
+    quit?()
+  end
 end

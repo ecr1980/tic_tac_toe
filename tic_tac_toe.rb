@@ -117,10 +117,10 @@ end
 
 
 
-game = true
+$game = true
 turn = true
 
-while (game == true)
+while ($game == true)
   if (turn == true)
     if play(true)
     turn = false

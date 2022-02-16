@@ -36,7 +36,7 @@ $c_3 = Board.new()
 
 $win_conditions = Array.new(9,0) #each value except the last is a win condition
 $game = true #game loop ends when this is false
-turn = true #Player 1 (X) goes on true, player 2 (O) on false
+$turn = true #Player 1 (X) goes on true, player 2 (O) on false
 $game_counter = 0
 
 
@@ -159,13 +159,13 @@ end
 
 
 while ($game == true)
-  if (turn == true)
+  if ($turn == true)
     if play(true)
-    turn = false
+    $turn = false
     end
   elsif
     if play(false)
-    turn = true
+    $turn = true
     end
   end
   check_for_win()
